@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import { debounce } from 'lodash'
 import {
   CButton,
   CPopover,
@@ -44,10 +45,19 @@ export default {
   props: {
     reportConfig: Object
   },
+  data() {
+    return {
+      reportConfigChange: () => {}
+    }
+  },
+  created() {
+    this.reportConfigChange = debounce(() => { console.log('regenerate', this.reportConfig) }, 2000)
+  },
   methods: {
     childChanged() {
-      console.log('changed', this.reportConfig)
-    }
+      this.reportConfigChange()
+    },
+    debounce
   }
 }
 </script>

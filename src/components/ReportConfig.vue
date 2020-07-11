@@ -4,7 +4,7 @@
       :is-checked="isChecked"
       :is-indeterminate="isIndeterminate"
       @change="onChange" />
-      {{ name }}
+      {{ formattedName }}
     <CStack pl="6" mt="1" spacing="1" v-if="childrenKeys.length">
       <reportConfig
         v-for="key in childrenKeys"
@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import { startCase } from 'lodash'
 import {
   CBox,
   CCheckbox,
@@ -37,7 +38,8 @@ export default {
   data() {
     return {
       isIndeterminate: false,
-      childrenKeys: []
+      childrenKeys: [],
+      formattedName: ''
     }
   },
   computed: {
@@ -55,11 +57,11 @@ export default {
   },
   mounted () {
     this.isChecked = this.reportConfig.enabled
+    this.formattedName = startCase(this.name)
     if (this.reportConfig.children) {
       this.childrenKeys = Object.keys(this.reportConfig.children)
     }
   },
-
   methods: {
     onChange (_, $e) {
       this.isChecked = $e.target.checked
