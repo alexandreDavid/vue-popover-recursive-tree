@@ -15,7 +15,7 @@ export default {
       reportConfig: {
         "enabled": true,
         "children": {
-          "coverPage": { "enabled": false },
+          "coverPage": { "enabled": true },
           "summary": { "enabled": true },
           "anomalyDefinitions": { "enabled": true },
           "missionReport": {
