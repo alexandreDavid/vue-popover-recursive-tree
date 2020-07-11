@@ -1,12 +1,12 @@
 <template>
   <CPopover>
     <CPopoverTrigger>
-      <CButton>Trigger</CButton>
+      <CButton>Set config</CButton>
     </CPopoverTrigger>
     <CPopoverContent zIndex={4}>
       <CPopoverArrow />
       <CPopoverCloseButton />
-      <CPopoverHeader>Choosing PDF sections</CPopoverHeader>
+      <CPopoverHeader>Selecting report sections to display</CPopoverHeader>
       <CPopoverBody>
         <ReportConfig :report-config="reportConfig" name="Select all" @childChanged="childChanged" />
       </CPopoverBody>
