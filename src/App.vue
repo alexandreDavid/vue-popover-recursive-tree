@@ -1,28 +1,33 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <PopoverTree :report-config="reportConfig" />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import PopoverTree from '@/components/PopoverTree'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    PopoverTree
+  },
+  data () {
+    return {
+      reportConfig: {
+        "enabled": true,
+        "children": {
+          "coverPage": { "enabled": false },
+          "summary": { "enabled": true },
+          "anomalyDefinitions": { "enabled": true },
+          "missionReport": {
+            "enabled": true,
+            "children": {
+              "missionDescription": { "enabled": true },
+              "missionCustomerInfo": { "enabled": true }
+            }
+          }
+        }
+      }
+    }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
